@@ -1,58 +1,85 @@
-# This program will take user input [website name] and create a random looking, hard to guess password, that is easy to remember.
-# WTPKLO is based off 6 cats that I have had, but the user could of course tweak this program and replace those letters with any 6 things easy to remember for themselves.
+# This program is a password manager that will take user input [website name], ie. 'facebook' (without quotes),
+# and create a secure password for that website, that is easy for the user to remember, but hard for others to guess because it is based off a forumla.
+# It will also store these passwords into an excel file for the user to access.
 
-# PW formula is WTP4x[wbst][# letters in wbst]xKLO[#cats].*
+# Formula: ABCnx[website name][#letters in website name]nDEF[#ABCDEF].*
+
+# Explaination of formula:
+    # ABCDEF represents 6 things important to the user in someway; something they would always remember (ie. your 6 favorite fruits)
+        # Those 6 items need to each start with a unique letter for this to work.
+    # The n in the equation stands for a number, something the user would remember, (ie. a favorite number)
+    # The x stands for a letter, which can also be changed to any random letter meaningful to the user.
+    # [website name], ie. 'facebook'
+    # [#letters in website name], ie. 'facebook' has 8 letters so the number would be 8
+    # [#ABCDEF] is also a number which represents the number of these letters used in the website name, ie. for facebook the number would be 5,
+        # if your letters were ABCDEF, because it contains all of those except D.
+    # The brackets are not part of the formula.
+    # Obviously, the special characters at the end could be changed as well if desired, but would have to be edited further down in the program.
+    
+# Key. Here is where you would change any parts of the formula you desire.
+
+a = 'A'
+b = 'B'
+c = 'C'
+d = 'D'
+e = 'E'
+f = 'F'
+x = 'x'
+n = '5'
+
 newPW = ''
 
 # get user input for what website they need a password for
 print('Please enter name of website for which you need a password')
 input = input()
+input = input.upper()
 
-# find part1 = WTP4x
+# find part1 = ABC5x
 part1 = ''
 for i in input:
-    if i == 'W' or i == 'w':
+    print(i)
+    if i == a or i == a:
         if i not in part1:
             part1 = i
 for i in input:
-    if i == 'T' or i == 't':
+    if i == b or i == b:
         if i not in part1:
             part1 += i
 for i in input:
-    if i == 'P' or i == 'p':
+    if i == c or i == c:
         if i not in part1:
             part1 += i
-part1 = part1.upper() + '4x'
+part1 = part1.upper() + str(n)+'x'
 
-# find part2 = [wbst][# letters in wbst]x
+# find part2 = [website][#letters in website]x
 part2 = ''
 count = 0
-part2 += str(input[0]) + str(input[-1])
+part2 += str(input[0].lower()) + str(input[-1].lower())
 for i in input:
     count += 1
 part2 += str(count) + 'x'
 
-# find part3 = KLO[#cats].*
+# find part3 = DEF[#ABCDEF].*
 part3 = ''
 numCats = 0
 for i in input:
-    if i == 'K' or i == 'k':
+    if i == d or i == d:
         if i not in part3:
             part3 = i
 for i in input:
-    if i == 'L' or i == 'l':
+    if i == e or i == e:
         if i not in part3:
             part3 += i
 for i in input:
-    if i == 'O' or i == 'o':
+    if i == f or i == f:
         if i not in part3:
             part3 += i
 part3 = part3.upper()            
 for i in part1:
-    if i == 'W' or i == 'T' or i == 'P':
+    if i == a or i == b or i == c:
         numCats += 1
 for i in part3:
-    if i == 'K' or i == 'L' or i == 'O':
+    if i == d or i == e or i == f:
         numCats += 1
 part3 += str(numCats) + '.*'
 
