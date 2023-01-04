@@ -11,8 +11,8 @@
     # The x stands for a letter, which can also be changed to any random letter meaningful to the user.
     # [website name], ie. 'facebook'
     # [#letters in website name], ie. 'facebook' has 8 letters so the number would be 8
-    # [#ABCDEF] is also a number which represents the number of these letters used in the website name, ie. for facebook the number would be 5,
-        # if your letters were ABCDEF, because it contains all of those except D.
+    # [#ABCDEF] (numFavs) is the number of these (so 0-6), which end up appearing in this particular result, ie. the number of letters that appear in the website name.
+        # ie. for facebook it would be 5 for these particular letters.
     # The brackets are not part of the formula.
     # Obviously, the special characters at the end could be changed as well if desired, but would have to be edited further down in the program.
     
@@ -61,7 +61,7 @@ part2 += str(count) + 'x'
 
 # find part3 = DEF[#ABCDEF].*
 part3 = ''
-numCats = 0
+numFavs = 0
 for i in input:
     if i == d or i == d:
         if i not in part3:
@@ -77,11 +77,11 @@ for i in input:
 part3 = part3.upper()            
 for i in part1:
     if i == a or i == b or i == c:
-        numCats += 1
+        numFavs += 1
 for i in part3:
     if i == d or i == e or i == f:
-        numCats += 1
-part3 += str(numCats) + '.*'
+        numFavs += 1
+part3 += str(numFavs) + '.*'
 
 newPW = part1 + part2 + part3
 print("You're new password is: " + newPW)
